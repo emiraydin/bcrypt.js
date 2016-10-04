@@ -13,10 +13,10 @@
     ],
     "repository": {
         "type": "url",
-        "url": "https://github.com/dcodeIO/bcrypt.js.git"
+        "url": "https://github.com/emiraydin/react-native-bcrypt.git"
     },
     "bugs": {
-        "url": "https://github.com/dcodeIO/bcrypt.js/issues"
+        "url": "https://github.com/emiraydin/react-native-bcrypt/issues"
     },
     "keywords": [
         "bcrypt",
