@@ -15,14 +15,16 @@ var randomFallback = null;
  * Generates cryptographically secure random bytes.
  * @function
  * @param {number} len Bytes length
+ * @param {boolean} testParam To avoid the warning if it is a test
  * @returns {!Array.<number>} Random bytes
  * @throws {Error} If no random implementation is available
  * @inner
  */
-function random(len) {
+function random(len, testParam) {
     /* fallback */
+    var test = testParam || false;
     if (!randomFallback) {
-        console.warn("Using Math.random is not cryptographically secure! Use bcrypt.setRandomFallback to set a PRNG.");
+        if (!test) console.warn("Using Math.random is not cryptographically secure! Use bcrypt.setRandomFallback to set a PRNG.");
         var buf = new Uint8Array(len);
         return buf.map((item) => Math.floor(Math.random() * (256 - 1 + 1) + 1));
     }
@@ -32,7 +34,7 @@ function random(len) {
 // Test if any secure randomness source is available
 var randomAvailable = false;
 try {
-    random(1);
+    random(1, true);
     randomAvailable = true;
 } catch (e) {}
 
